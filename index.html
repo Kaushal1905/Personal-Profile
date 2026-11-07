@@ -2,266 +2,626 @@
 <html lang="en">
 
 <head>
-    <title>Kaushal Tanna — Portfolio</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaushal Tanna — Full-Stack Developer &amp; CSE Undergrad</title>
+
+    <!-- SEO & Metadata -->
+    <meta name="description"
+        content="Personal portfolio of Kaushal Anandbhai Tanna, Computer Science undergraduate at VIT Bhopal, full-stack web developer, and data science enthusiast.">
+    <meta name="keywords"
+        content="Kaushal Tanna, Portfolio, Full-Stack Developer, CSE, VIT Bhopal, React, Node.js, Flask, LeetCode, Arogya India">
+    <meta name="author" content="Kaushal Tanna">
+
+    <!-- Open Graph / Social Meta -->
+    <meta property="og:title" content="Kaushal Tanna — Full-Stack Developer &amp; CSE Undergrad">
+    <meta property="og:description"
+        content="Building impactful web and healthcare applications with React, Node.js, Flask, and C++. 150+ LeetCode solved.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://github.com/kaushal1905">
+
+    <!-- Favicon (Embedded SVG) -->
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23070A12'/%3E%3Ctext x='50%25' y='55%25' text-anchor='middle' dominant-baseline='middle' font-family='sans-serif' font-weight='800' font-size='16' fill='%234F8EF7'%3EKT%3C/text%3E%3C/svg%3E">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Custom cursor -->
-    <div id="cursor"></div>
-    <div id="cursor-ring"></div>
+    <!-- Custom Cursor (Desktop only) -->
+    <div id="cursor" aria-hidden="true"></div>
+    <div id="cursor-ring" aria-hidden="true"></div>
 
-    <!-- NAV -->
-    <nav>
-        <div class="nav-logo">KT</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="nav-container" aria-label="Main Navigation">
+            <a href="#about" class="nav-logo" aria-label="Kaushal Tanna Home">
+                <span class="logo-text">KT</span>
+                <span class="logo-dot"></span>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="Kaushal Resume(main).pdf" download="Kaushal_Tanna_Resume.pdf" class="btn btn-sm btn-outline"
+                    aria-label="Download Resume PDF">
+                    <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    <span>Resume</span>
+                </a>
+
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <ul class="mobile-nav-links">
+            <li><a href="#about" class="mobile-link">About</a></li>
+            <li><a href="#skills" class="mobile-link">Skills</a></li>
+            <li><a href="#projects" class="mobile-link">Projects</a></li>
+            <li><a href="#achievements" class="mobile-link">Achievements</a></li>
+            <li><a href="#experience" class="mobile-link">Experience</a></li>
+            <li><a href="#education" class="mobile-link">Education</a></li>
+            <li><a href="#contact" class="mobile-link">Contact</a></li>
+            <li>
+                <a href="Kaushal Resume(main).pdf" download="Kaushal_Tanna_Resume.pdf"
+                    class="btn btn-primary w-full text-center">
+                    Download Resume PDF 📄
+                </a>
+            </li>
         </ul>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero" id="about">
-        <div class="hero-glow"></div>
-        <div class="hero-inner">
-            <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="badge-dot"></span>
-                    Available for opportunities
-                </div>
-                <h1 class="hero-name"><span>Kaushal<br>Tanna</span></h1>
-                <p class="hero-role">$ CSE Student · Data Science Intern · Full-Stack Dev</p>
-                <p class="hero-desc">
-                    Second-year Computer Science student at VIT Bhopal, building impactful applications and exploring
-                    the intersection of data and software engineering.
-                </p>
-                <div class="hero-ctas">
-                    <a href="https://github.com/kaushal1905" target="_blank" class="btn btn-primary">GitHub Profile</a>
-                    <a href="https://linkedin.com/in/kaushal-tanna-a67772328" target="_blank"
-                        class="btn btn-ghost">LinkedIn</a>
-                </div>
-            </div>
-
-            <div class="avatar-card">
-                <div class="avatar-frame">
-                    <div class="avatar-inner">
-                        <span class="avatar-initials">KT</span>
-                    </div>
-                </div>
-                <div class="avatar-stats">
-                    <div class="stat-chip">
-                        <span class="stat-num">8.7</span>
-                        <span class="stat-label">CGPA</span>
-                    </div>
-                    <div class="stat-chip">
-                        <span class="stat-num">2+</span>
-                        <span class="stat-label">Projects</span>
-                    </div>
-                    <div class="stat-chip">
-                        <span class="stat-num">500+</span>
-                        <span class="stat-label">Event Reach</span>
-                    </div>
-                    <div class="stat-chip">
-                        <span class="stat-num">2nd</span>
-                        <span class="stat-label">Year CSE</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SKILLS -->
-    <div class="section" id="skills">
-        <div class="section-label">// 01 — Expertise</div>
-        <h2 class="section-title">Skills & Tools</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <div class="skill-cat-icon" style="background: rgba(79,142,247,0.1);">🖥️</div>
-                <div class="skill-cat-title">Languages</div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">C++</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">PHP</span>
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">HTML/CSS</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-cat-icon" style="background: rgba(0,229,192,0.1);">⚙️</div>
-                <div class="skill-cat-title">Tools & Platforms</div>
-                <div class="skill-tags">
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">GitHub</span>
-                    <span class="skill-tag">VS Code</span>
-                    <span class="skill-tag">MySQL</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <div class="skill-cat-icon" style="background: rgba(124,92,252,0.1);">🧠</div>
-                <div class="skill-cat-title">Core Concepts</div>
-                <div class="skill-tags">
-                    <span class="skill-tag">DSA</span>
-                    <span class="skill-tag">DBMS</span>
-                    <span class="skill-tag">Web Dev</span>
-                    <span class="skill-tag">Machine Learning</span>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <!-- PROJECTS -->
-    <div class="section" id="projects">
-        <div class="section-label">// 02 — Work</div>
-        <h2 class="section-title">Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-num">01 / Travel Platform</div>
-                <div class="project-title">Avipro Travels</div>
-                <p class="project-desc">
-                    A full-stack travel booking website with user authentication, responsive design, and dynamic booking
-                    flows for a seamless travel planning experience.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">PHP</span>
-                    <span class="project-tag">MySQL</span>
-                    <span class="project-tag">JavaScript</span>
-                    <span class="project-tag">HTML/CSS</span>
-                </div>
-            </div>
-            <div class="project-card">
-                <div class="project-num">02 / CLI Tool</div>
-                <div class="project-title">Campus Course & Records Manager</div>
-                <p class="project-desc">
-                    Java CLI application for managing students, courses, enrollments, and academic records — built with
-                    OOP principles and CSV file persistence.
-                </p>
-                <div class="project-tags">
-                    <span class="project-tag">Java</span>
-                    <span class="project-tag">OOP</span>
-                    <span class="project-tag">CSV I/O</span>
-                    <span class="project-tag">CLI</span>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- MAIN CONTENT -->
+    <main>
 
-    <!-- EXPERIENCE -->
-    <div class="section" id="experience">
-        <div class="section-label">// 03 — Journey</div>
-        <h2 class="section-title">Experience</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-period">July 2025 — September 2025</div>
-                <div class="timeline-role">Data Science Intern</div>
-                <div class="timeline-org">1Stop</div>
-                <p class="timeline-desc">
-                    Worked on real-world datasets, applied statistical analysis techniques, and strengthened
-                    problem-solving skills in a professional data science environment.
-                </p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot" style="background: var(--accent2);"></div>
-                <div class="timeline-period">Ongoing</div>
-                <div class="timeline-role">Event Manager</div>
-                <div class="timeline-org">Microsoft Technical Club · VIT Bhopal</div>
-                <p class="timeline-desc">
-                    Managed 5+ technical events reaching 500+ participants. Handled end-to-end promotions, logistics,
-                    and team coordination for a flagship tech community.
-                </p>
-            </div>
-        </div>
-    </div>
+        <!-- HERO SECTION -->
+        <section class="hero" id="about">
+            <div class="hero-ambient" aria-hidden="true"></div>
+            <div class="hero-glow" aria-hidden="true"></div>
 
-    <!-- EDUCATION -->
-    <div class="section">
-        <div class="section-label">// 04 — Education</div>
-        <h2 class="section-title">Academic Background</h2>
-        <div class="edu-grid">
-            <div class="edu-card">
-                <div>
-                    <div class="edu-degree">B.Tech in Computer Science & Engineering</div>
-                    <div class="edu-inst">VIT Bhopal University</div>
-                </div>
-                <div class="edu-meta">
-                    <div class="edu-score">8.7 CGPA</div>
-                    <div class="edu-year">2024 — Present</div>
-                </div>
-            </div>
-            <div class="edu-card">
-                <div>
-                    <div class="edu-degree">Senior Secondary · Class XII</div>
-                    <div class="edu-inst">S R Public School</div>
-                </div>
-                <div class="edu-meta">
-                    <div class="edu-score">82%</div>
-                    <div class="edu-year">2024</div>
-                </div>
-            </div>
-            <div class="edu-card">
-                <div>
-                    <div class="edu-degree">Secondary · Class X</div>
-                    <div class="edu-inst">Gangotri International School</div>
-                </div>
-                <div class="edu-meta">
-                    <div class="edu-score">86%</div>
-                    <div class="edu-year">2022</div>
-                </div>
-            </div>
-        </div>
-    </div>
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        <span>Open to Summer 2026 Opportunities</span>
+                    </div>
 
-    <!-- CONTACT -->
-    <div class="section" id="contact">
-        <div class="section-label">// 05 — Connect</div>
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-grid">
-            <a href="mailto:kaushaltanna2007@gmail.com" class="contact-link">
-                <div class="contact-icon" style="background: rgba(79,142,247,0.1);">✉️</div>
-                <div>
-                    <div class="contact-title">Email</div>
-                    <div class="contact-val">kaushaltanna2007@gmail.com</div>
-                </div>
-            </a>
-            <a href="tel:+919157798931" class="contact-link">
-                <div class="contact-icon" style="background: rgba(0,229,192,0.1);">📞</div>
-                <div>
-                    <div class="contact-title">Phone</div>
-                    <div class="contact-val">+91 91577 98931</div>
-                </div>
-            </a>
-            <a href="https://github.com/kaushal1905" target="_blank" class="contact-link">
-                <div class="contact-icon" style="background: rgba(255,255,255,0.05);">🐙</div>
-                <div>
-                    <div class="contact-title">GitHub</div>
-                    <div class="contact-val">github.com/kaushal1905</div>
-                </div>
-            </a>
-            <a href="https://linkedin.com/in/kaushal-tanna-a67772328" target="_blank" class="contact-link">
-                <div class="contact-icon" style="background: rgba(10,102,194,0.15);">💼</div>
-                <div>
-                    <div class="contact-title">LinkedIn</div>
-                    <div class="contact-val">kaushal-tanna-a67772328</div>
-                </div>
-            </a>
-        </div>
-    </div>
+                    <h1 class="hero-name">
+                        <span>Kaushal<br>Tanna</span>
+                    </h1>
 
+                    <p class="hero-role" id="heroRole">$ CSE Undergrad · Full-Stack Developer · Data Science Enthusiast</p>
+
+                    <p class="hero-desc">
+                        Computer Science student at <strong>VIT Bhopal</strong> (CGPA: 8.64) passionate about building scalable full-stack applications, 
+                        solving complex problems with <strong>150+ LeetCode DSA solutions</strong> in C++, and creating high-impact healthcare and web solutions.
+                    </p>
+
+                    <div class="hero-ctas">
+                        <a href="Kaushal Resume(main).pdf" download="Kaushal_Tanna_Resume.pdf" class="btn btn-primary">
+                            <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                                <polyline points="7 10 12 15 17 10" />
+                                <line x1="12" y1="15" x2="12" y2="3" />
+                            </svg>
+                            <span>Download Resume</span>
+                        </a>
+
+                        <a href="#projects" class="btn btn-ghost">
+                            <span>Explore Projects</span>
+                            <span class="arrow">↓</span>
+                        </a>
+                    </div>
+
+                    <!-- Hero Social Icons -->
+                    <div class="hero-socials">
+                        <a href="https://github.com/kaushal1905" target="_blank" rel="noopener noreferrer"
+                            class="social-pill" title="GitHub Profile">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                            </svg>
+                            <span>GitHub</span>
+                        </a>
+
+                        <a href="https://linkedin.com/in/kaushaltanna" target="_blank" rel="noopener noreferrer"
+                            class="social-pill" title="LinkedIn Profile">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                            <span>LinkedIn</span>
+                        </a>
+
+                        <a href="https://leetcode.com/u/kaushal1905/" target="_blank" rel="noopener noreferrer"
+                            class="social-pill" title="LeetCode Profile">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .271 4.735 5.66 5.66 0 0 0 2.213 2.176l4.636 2.502a1.365 1.365 0 0 0 .666.172c.49 0 .954-.256 1.218-.68a1.37 1.37 0 0 0-.39-1.879l-4.498-2.427a2.91 2.91 0 0 1-1.137-1.117 2.802 2.802 0 0 1-.137-2.392c.15-.436.43-.815.8-1.09l3.542-3.791 5.016-5.373a1.374 1.374 0 0 0-.97-2.316zm5.836 7.428a1.365 1.365 0 0 0-.666.172l-8.625 4.654a1.37 1.37 0 0 0 .39 1.879 1.36 1.36 0 0 0 1.878-.39l8.625-4.654a1.374 1.374 0 0 0-.602-2.661z" />
+                            </svg>
+                            <span>LeetCode</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Avatar and Quick Stats Card -->
+                <div class="avatar-card">
+                    <div class="avatar-frame">
+                        <div class="avatar-inner">
+                            <img src="profile.jpg" alt="Kaushal Tanna" class="avatar-img"
+                                onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='flex';">
+                            <div class="avatar-fallback" id="avatarFallback">KT</div>
+                        </div>
+                    </div>
+
+                    <div class="avatar-stats" id="statsContainer">
+                        <div class="stat-chip" title="Cumulative Grade Point Average">
+                            <span class="stat-num" data-target="8.64" data-decimals="2">8.64</span>
+                            <span class="stat-label">CGPA · VIT</span>
+                        </div>
+                        <a href="https://leetcode.com/u/kaushal1905/" target="_blank" rel="noopener noreferrer"
+                            class="stat-chip linkable" title="View LeetCode Profile">
+                            <span class="stat-num" data-target="150" data-suffix="+">150+</span>
+                            <span class="stat-label">LeetCode DSA ↗</span>
+                        </a>
+                        <div class="stat-chip" title="Participants across events managed">
+                            <span class="stat-num" data-target="500" data-suffix="+">500+</span>
+                            <span class="stat-label">Event Reach</span>
+                        </div>
+                        <div class="stat-chip" title="Industry & Academic Certifications">
+                            <span class="stat-num" data-target="4" data-suffix="">4</span>
+                            <span class="stat-label">Certifications</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section class="section" id="skills">
+            <div class="section-label">// 01 — Capabilities</div>
+            <h2 class="section-title">Technical Expertise</h2>
+
+            <div class="skills-grid">
+                <!-- Languages -->
+                <div class="skill-category">
+                    <div class="skill-cat-header">
+                        <div class="skill-cat-icon" style="background: rgba(79,142,247,0.12); color: #4F8EF7;">💻</div>
+                        <div class="skill-cat-title">Programming Languages</div>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">C++ (Core &amp; DSA)</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Java (Basic)</span>
+                        <span class="skill-tag">HTML5 / CSS3</span>
+                    </div>
+                </div>
+
+                <!-- Frontend Technologies -->
+                <div class="skill-category">
+                    <div class="skill-cat-header">
+                        <div class="skill-cat-icon" style="background: rgba(0,229,192,0.12); color: #00E5C0;">🎨</div>
+                        <div class="skill-cat-title">Frontend &amp; UI</div>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">React.js</span>
+                        <span class="skill-tag">Bootstrap</span>
+                        <span class="skill-tag">Responsive Layouts</span>
+                        <span class="skill-tag">Modern CSS / Grid</span>
+                        <span class="skill-tag">DOM &amp; Fetch API</span>
+                    </div>
+                </div>
+
+                <!-- Backend & Databases -->
+                <div class="skill-category">
+                    <div class="skill-cat-header">
+                        <div class="skill-cat-icon" style="background: rgba(124,92,252,0.12); color: #7C5CFC;">⚡</div>
+                        <div class="skill-cat-title">Backend &amp; Databases</div>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">Node.js</span>
+                        <span class="skill-tag highlight">Flask (Python)</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">RESTful APIs</span>
+                        <span class="skill-tag">Session Auth</span>
+                    </div>
+                </div>
+
+                <!-- AI / ML & Data Science -->
+                <div class="skill-category">
+                    <div class="skill-cat-header">
+                        <div class="skill-cat-icon" style="background: rgba(245,158,11,0.12); color: #F59E0B;">🧠</div>
+                        <div class="skill-cat-title">AI / ML &amp; Data Science</div>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">NLP Basics</span>
+                        <span class="skill-tag">Statistical Modeling</span>
+                    </div>
+                </div>
+
+                <!-- Developer Tools -->
+                <div class="skill-category">
+                    <div class="skill-cat-header">
+                        <div class="skill-cat-icon" style="background: rgba(236,72,153,0.12); color: #EC4899;">🛠️</div>
+                        <div class="skill-cat-title">Tools &amp; Workflow</div>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">Vercel</span>
+                    </div>
+                </div>
+
+                <!-- Core Competencies -->
+                <div class="skill-category">
+                    <div class="skill-cat-header">
+                        <div class="skill-cat-icon" style="background: rgba(16,185,129,0.12); color: #10B981;">📐</div>
+                        <div class="skill-cat-title">Core Fundamentals</div>
+                    </div>
+                    <div class="skill-tags">
+                        <span class="skill-tag highlight">DSA (150+ Solved)</span>
+                        <span class="skill-tag">OOP Principles</span>
+                        <span class="skill-tag">DBMS</span>
+                        <span class="skill-tag">Computer Networks</span>
+                        <span class="skill-tag">Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED PROJECTS SECTION -->
+        <section class="section" id="projects">
+            <div class="section-label">// 02 — Work</div>
+            <h2 class="section-title">Featured Projects</h2>
+
+            <div class="projects-grid">
+                <!-- Project 1: Arogya (Flagship) -->
+                <article class="project-card featured-project">
+                    <div class="project-header">
+                        <div class="project-num">01 / Flagship Healthcare Platform</div>
+                        <div class="live-status-pill">
+                            <span class="status-dot"></span>
+                            <span>Live App</span>
+                        </div>
+                    </div>
+
+                    <h3 class="project-title">Arogya</h3>
+                    <div class="project-subtitle">Smart OPD &amp; Healthcare Management System</div>
+
+                    <p class="project-desc">
+                        A full-stack digital healthcare solution enabling streamlined patient registration, automated 
+                        appointment scheduling, and centralized medical record management. Designed with a modular REST API 
+                        backend, MongoDB integration for medical data storage, and a responsive interface to ease doctor-patient interactions.
+                    </p>
+
+                    <div class="project-tags">
+                        <span class="project-tag">React.js</span>
+                        <span class="project-tag">Flask / Node.js</span>
+                        <span class="project-tag">MongoDB</span>
+                        <span class="project-tag">REST APIs</span>
+                        <span class="project-tag">Vercel</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <a href="https://arogya-india.vercel.app/" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-sm btn-primary">
+                            <span>Open Live Platform</span>
+                            <span class="external-icon">↗</span>
+                        </a>
+                        <a href="https://github.com/kaushal1905" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-sm btn-ghost">
+                            <span>View Source</span>
+                            <span class="external-icon">↗</span>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project 2: Avipro Travels -->
+                <article class="project-card">
+                    <div class="project-header">
+                        <div class="project-num">02 / Full-Stack Web Platform</div>
+                        <div class="tech-pill">Web Platform</div>
+                    </div>
+
+                    <h3 class="project-title">Avipro Travels</h3>
+                    <div class="project-subtitle">Dynamic Travel Booking &amp; Package Management</div>
+
+                    <p class="project-desc">
+                        A dynamic full-stack travel reservation website featuring secure user authentication, 
+                        session lifecycle management, and a relational MySQL architecture for handling vacation packages, customer bookings, and itineraries.
+                        Crafted with mobile-first Bootstrap for seamless browsing.
+                    </p>
+
+                    <div class="project-tags">
+                        <span class="project-tag">PHP</span>
+                        <span class="project-tag">MySQL</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Bootstrap</span>
+                        <span class="project-tag">HTML5/CSS3</span>
+                    </div>
+
+                    <div class="project-actions">
+                        <a href="https://github.com/Kaushal1905/AviproTravels" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-sm btn-ghost">
+                            <span>GitHub Repository</span>
+                            <span class="external-icon">↗</span>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ACHIEVEMENTS & LEETCODE SPOTLIGHT -->
+        <section class="section" id="achievements">
+            <div class="section-label">// 03 — Milestones</div>
+            <h2 class="section-title">Achievements &amp; Problem Solving</h2>
+
+            <div class="achieve-banner">
+                <div class="achieve-main">
+                    <div class="leetcode-badge">
+                        <svg class="leetcode-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .271 4.735 5.66 5.66 0 0 0 2.213 2.176l4.636 2.502a1.365 1.365 0 0 0 .666.172c.49 0 .954-.256 1.218-.68a1.37 1.37 0 0 0-.39-1.879l-4.498-2.427a2.91 2.91 0 0 1-1.137-1.117 2.802 2.802 0 0 1-.137-2.392c.15-.436.43-.815.8-1.09l3.542-3.791 5.016-5.373a1.374 1.374 0 0 0-.97-2.316zm5.836 7.428a1.365 1.365 0 0 0-.666.172l-8.625 4.654a1.37 1.37 0 0 0 .39 1.879 1.36 1.36 0 0 0 1.878-.39l8.625-4.654a1.374 1.374 0 0 0-.602-2.661z" />
+                        </svg>
+                        <span>LeetCode Solved in C++</span>
+                    </div>
+                    <div class="achieve-title">150+ Data Structures &amp; Algorithms Problems</div>
+                    <p class="achieve-desc">
+                        Consistently practicing algorithmic problem solving with focused expertise in 
+                        <strong>Arrays, Trees, Dynamic Programming, SQL, and Linked Lists</strong>.
+                    </p>
+                    <div class="achieve-tags">
+                        <span class="achieve-tag">C++ STL</span>
+                        <span class="achieve-tag">Dynamic Programming</span>
+                        <span class="achieve-tag">Binary Trees</span>
+                        <span class="achieve-tag">SQL Queries</span>
+                        <span class="achieve-tag">Two Pointers</span>
+                    </div>
+                </div>
+
+                <div class="achieve-cta">
+                    <a href="https://leetcode.com/u/kaushal1905/" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-primary">
+                        <span>Visit LeetCode Profile</span>
+                        <span class="external-icon">↗</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Certifications Grid -->
+            <div class="certs-section">
+                <div class="subsection-title">Certifications &amp; Professional Learning</div>
+                <div class="certs-grid">
+                    <div class="cert-card">
+                        <div class="cert-icon">☁️</div>
+                        <div class="cert-info">
+                            <div class="cert-name">Cloud Computing</div>
+                            <div class="cert-issuer">NPTEL</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon">🌐</div>
+                        <div class="cert-info">
+                            <div class="cert-name">Computer Networking</div>
+                            <div class="cert-issuer">University of Colorado Boulder · Coursera</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon">📊</div>
+                        <div class="cert-info">
+                            <div class="cert-name">Applied Data Science</div>
+                            <div class="cert-issuer">1Stop</div>
+                        </div>
+                    </div>
+
+                    <div class="cert-card">
+                        <div class="cert-icon">📈</div>
+                        <div class="cert-info">
+                            <div class="cert-name">Marketing Analysis</div>
+                            <div class="cert-issuer">NPTEL</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE SECTION -->
+        <section class="section" id="experience">
+            <div class="section-label">// 04 — Journey</div>
+            <h2 class="section-title">Experience &amp; Leadership</h2>
+
+            <div class="timeline">
+                <!-- 1Stop Internship -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-period">July 2025 — September 2025 · Remote</div>
+                    <h3 class="timeline-role">Data Science Intern</h3>
+                    <div class="timeline-org">1Stop</div>
+                    <p class="timeline-desc">
+                        Participated in a structured Data Science internship tackling real-world datasets. 
+                        Applied statistical models, exploratory data analysis (EDA), and data cleaning techniques in Python 
+                        to extract actionable insights and strengthen practical analytical thinking.
+                    </p>
+                </div>
+
+                <!-- Microsoft Technical Club -->
+                <div class="timeline-item">
+                    <div class="timeline-dot accent-dot"></div>
+                    <div class="timeline-period">Present · Community Leadership</div>
+                    <h3 class="timeline-role">Event Manager</h3>
+                    <div class="timeline-org">Microsoft Technical Club · VIT Bhopal</div>
+                    <p class="timeline-desc">
+                        Organized and managed 5+ technical and cultural events engaging over <strong>500+ participants</strong>. 
+                        Led end-to-end promotional campaigns and logistics, driving a <strong>40% growth in social media engagement</strong> 
+                        across student tech communities.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION SECTION -->
+        <section class="section" id="education">
+            <div class="section-label">// 05 — Academics</div>
+            <h2 class="section-title">Education</h2>
+
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <div class="edu-details">
+                        <h3 class="edu-degree">B.Tech in Computer Science &amp; Engineering</h3>
+                        <div class="edu-inst">Vellore Institute of Technology (VIT), Bhopal</div>
+                        <div class="edu-location">Bhopal, India</div>
+                    </div>
+                    <div class="edu-meta">
+                        <div class="edu-score">8.64 CGPA</div>
+                        <div class="edu-year">Expected May 2028</div>
+                    </div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-details">
+                        <h3 class="edu-degree">Senior Secondary Education · Class XII</h3>
+                        <div class="edu-inst">S R Public School</div>
+                        <div class="edu-location">Kota, India</div>
+                    </div>
+                    <div class="edu-meta">
+                        <div class="edu-score">81.8%</div>
+                        <div class="edu-year">May 2024</div>
+                    </div>
+                </div>
+
+                <div class="edu-card">
+                    <div class="edu-details">
+                        <h3 class="edu-degree">Secondary Education · Class X</h3>
+                        <div class="edu-inst">Gangotri International School</div>
+                        <div class="edu-location">Rajkot, India</div>
+                    </div>
+                    <div class="edu-meta">
+                        <div class="edu-score">86.2%</div>
+                        <div class="edu-year">May 2022</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="section" id="contact">
+            <div class="section-label">// 06 — Connect</div>
+            <h2 class="section-title">Let's Build Something Together</h2>
+
+            <div class="contact-card-wrapper">
+                <div class="contact-intro">
+                    <p>
+                        I am currently open to <strong>Summer 2026 internships, full-stack development roles, and research projects</strong>.
+                        Feel free to reach out directly via email, phone, or connect with me on LinkedIn!
+                    </p>
+                    <a href="mailto:kaushaltanna2007@gmail.com" class="btn btn-primary inline-btn">
+                        <span>Say Hello 👋</span>
+                    </a>
+                </div>
+
+                <div class="contact-grid">
+                    <a href="mailto:kaushaltanna2007@gmail.com" class="contact-link">
+                        <div class="contact-icon email-icon">✉️</div>
+                        <div class="contact-info">
+                            <div class="contact-title">Email</div>
+                            <div class="contact-val">kaushaltanna2007@gmail.com</div>
+                        </div>
+                    </a>
+
+                    <a href="tel:+919157798931" class="contact-link">
+                        <div class="contact-icon phone-icon">📞</div>
+                        <div class="contact-info">
+                            <div class="contact-title">Phone</div>
+                            <div class="contact-val">+91 91577 98931</div>
+                        </div>
+                    </a>
+
+                    <a href="https://linkedin.com/in/kaushaltanna" target="_blank" rel="noopener noreferrer"
+                        class="contact-link">
+                        <div class="contact-icon linkedin-icon">💼</div>
+                        <div class="contact-info">
+                            <div class="contact-title">LinkedIn</div>
+                            <div class="contact-val">linkedin.com/in/kaushaltanna</div>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/kaushal1905" target="_blank" rel="noopener noreferrer"
+                        class="contact-link">
+                        <div class="contact-icon github-icon">🐙</div>
+                        <div class="contact-info">
+                            <div class="contact-title">GitHub</div>
+                            <div class="contact-val">github.com/kaushal1905</div>
+                        </div>
+                    </a>
+
+                    <a href="https://leetcode.com/u/kaushal1905/" target="_blank" rel="noopener noreferrer"
+                        class="contact-link full-width-contact">
+                        <div class="contact-icon leetcode-icon">⚡</div>
+                        <div class="contact-info">
+                            <div class="contact-title">LeetCode Profile</div>
+                            <div class="contact-val">leetcode.com/u/kaushal1905 · 150+ Solved</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
     <footer>
-        <p>© 2026 Kaushal Tanna — Built with craft & care</p>
+        <div class="footer-inner">
+            <p>© 2026 Kaushal Anandbhai Tanna · Built with craft &amp; care.</p>
+            <div class="footer-links">
+                <a href="#about">Back to top ↑</a>
+            </div>
+        </div>
     </footer>
 
+    <!-- JavaScript Bundle -->
     <script src="app.js"></script>
 </body>
 

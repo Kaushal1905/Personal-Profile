@@ -1,95 +1,236 @@
-// Custom cursor
+/**
+ * KAUSHAL TANNA — PORTFOLIO JAVASCRIPT
+ * Features:
+ * - Fluid Custom Cursor with LERP interpolation
+ * - Dynamic data-target Counter Animations
+ * - Terminal Typing Effect for Hero
+ * - Section Scroll Reveal (IntersectionObserver)
+ * - Active Navigation Link Tracking
+ * - Mobile Navigation Drawer Controller
+ * - Mouse-following Ambient Spotlight
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ==========================================
+  // 1. CUSTOM CURSOR (Desktop only)
+  // ==========================================
   const cursor = document.getElementById('cursor');
   const cursorRing = document.getElementById('cursor-ring');
-  let mx = 0, my = 0, rx = 0, ry = 0;
+  const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
-  });
+  if (cursor && cursorRing && isFinePointer) {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX;
+    let ringY = mouseY;
+    let isMoving = false;
 
-  function animateRing() {
-    rx += (mx - rx - 18) * 0.12;
-    ry += (my - ry - 18) * 0.12;
-    cursorRing.style.transform = `translate(${rx}px, ${ry}px)`;
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursor.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`;
+      if (!isMoving) {
+        isMoving = true;
+        cursor.style.opacity = '1';
+        cursorRing.style.opacity = '1';
+      }
+    });
+
+    // Smooth trailing ring using linear interpolation (LERP)
+    function animateRing() {
+      ringX += (mouseX - ringX - 17) * 0.15;
+      ringY += (mouseY - ringY - 17) * 0.15;
+      cursorRing.style.transform = `translate(${ringX}px, ${ringY}px)`;
+      requestAnimationFrame(animateRing);
+    }
     requestAnimationFrame(animateRing);
+
+    // Expand cursor ring on interactive elements
+    const interactiveSelectors = 'a, button, .btn, .stat-chip, .skill-tag, .project-card, .cert-card, .contact-link';
+    document.querySelectorAll(interactiveSelectors).forEach((el) => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+    });
+
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', () => {
+      cursor.style.opacity = '0';
+      cursorRing.style.opacity = '0';
+      isMoving = false;
+    });
   }
-  animateRing();
 
-  document.querySelectorAll('a, button, .card, .skill-tag, .btn, .stat-chip').forEach(el => {
-    el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-    el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-  });
+  // ==========================================
+  // 2. HERO TERMINAL TYPING EFFECT
+  // ==========================================
+  const roleEl = document.getElementById('heroRole');
+  if (roleEl) {
+    const fullText = roleEl.textContent.trim();
+    roleEl.textContent = '$ ';
+    let charIndex = 2; // Keep the '$ ' prefix
 
-  // Scroll reveal
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
+    function typeCharacter() {
+      if (charIndex < fullText.length) {
+        roleEl.textContent += fullText.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeCharacter, 38);
+      }
+    }
+    setTimeout(typeCharacter, 600);
+  }
+
+  // ==========================================
+  // 3. MOUSE-TRACKING HERO GLOW
+  // ==========================================
+  const heroSection = document.querySelector('.hero');
+  const heroGlow = document.querySelector('.hero-glow');
+
+  if (heroSection && heroGlow && isFinePointer) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      heroGlow.style.transform = `translate(${x - 300}px, ${y - 300}px)`;
+    });
+  }
+
+  // ==========================================
+  // 4. SCROLL REVEAL (IntersectionObserver)
+  // ==========================================
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.section').forEach(s => observer.observe(s));
-
-  // Hero glow follows mouse
-  const glow = document.querySelector('.hero-glow');
-  document.querySelector('.hero').addEventListener('mousemove', e => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    glow.style.transform = `translate(${x - 300}px, ${y - 300}px)`;
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
   });
 
-  // Skill tag hover ripple
-  document.querySelectorAll('.skill-tag').forEach(tag => {
-    tag.addEventListener('click', () => {
-      tag.style.background = 'rgba(79,142,247,0.35)';
-      setTimeout(() => tag.style.background = '', 400);
-    });
+  document.querySelectorAll('.section').forEach((section) => {
+    sectionObserver.observe(section);
   });
 
-  // Typing animation for hero role
-  const roleEl = document.querySelector('.hero-role');
-  const roleText = roleEl.textContent;
-  roleEl.textContent = '$ ';
-  let i = 2;
-  function typeRole() {
-    if (i < roleText.length) {
-      roleEl.textContent += roleText[i];
-      i++;
-      setTimeout(typeRole, 40);
-    }
-  }
-  setTimeout(typeRole, 1200);
-
-  // Staggered card animations
-  document.querySelectorAll('.project-card, .edu-card, .contact-link, .skill-category').forEach((el, i) => {
-    el.style.animationDelay = `${i * 0.08}s`;
-  });
-
-  // Counter animation for stats
-  function animateCounter(el, target, suffix = '') {
+  // ==========================================
+  // 5. DECOUPLED STAT COUNTERS
+  // ==========================================
+  function animateCounter(el, target, decimals = 0, suffix = '') {
     let current = 0;
-    const step = target / 40;
-    const timer = setInterval(() => {
-      current = Math.min(current + step, target);
-      el.textContent = (Number.isInteger(target) ? Math.round(current) : current.toFixed(1)) + suffix;
-      if (current >= target) clearInterval(timer);
-    }, 30);
+    const duration = 1200; // ms
+    const startTime = performance.now();
+
+    function updateCounter(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out quartic
+      const easeProgress = 1 - Math.pow(1 - progress, 4);
+
+      current = target * easeProgress;
+      el.textContent = current.toFixed(decimals) + suffix;
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      } else {
+        el.textContent = target.toFixed(decimals) + suffix;
+      }
+    }
+    requestAnimationFrame(updateCounter);
   }
 
-  const statObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const nums = entry.target.querySelectorAll('.stat-num');
-        nums[0] && animateCounter(nums[0], 8.7);
-        nums[1] && animateCounter(nums[1], 2, '+');
-        nums[2] && animateCounter(nums[2], 500, '+');
-        statObserver.unobserve(entry.target);
+  const statsContainer = document.getElementById('statsContainer');
+  if (statsContainer) {
+    const statObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.stat-num').forEach((numEl) => {
+            const target = parseFloat(numEl.dataset.target) || 0;
+            const decimals = parseInt(numEl.dataset.decimals, 10) || 0;
+            const suffix = numEl.dataset.suffix || '';
+            animateCounter(numEl, target, decimals, suffix);
+          });
+          statObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    statObserver.observe(statsContainer);
+  }
+
+  // ==========================================
+  // 6. ACTIVE NAVIGATION LINK ON SCROLL
+  // ==========================================
+  const navSections = document.querySelectorAll('section[id]');
+  const desktopNavLinks = document.querySelectorAll('.nav-links a');
+
+  function updateActiveNav() {
+    const scrollPos = window.scrollY + 140;
+
+    navSections.forEach((section) => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      const id = section.getAttribute('id');
+
+      if (scrollPos >= top && scrollPos < top + height) {
+        desktopNavLinks.forEach((link) => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          }
+        });
       }
     });
-  }, { threshold: 0.5 });
+  }
 
-  const avatarCard = document.querySelector('.avatar-card');
-  if (avatarCard) statObserver.observe(avatarCard);
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+  // ==========================================
+  // 7. MOBILE MENU TOGGLE
+  // ==========================================
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+
+  if (menuToggle && mobileDrawer) {
+    const toggleMenu = () => {
+      const isOpen = mobileDrawer.classList.toggle('open');
+      menuToggle.classList.toggle('active', isOpen);
+      menuToggle.setAttribute('aria-expanded', isOpen.toString());
+    };
+
+    menuToggle.addEventListener('click', toggleMenu);
+
+    // Close when clicking mobile link
+    document.querySelectorAll('.mobile-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        mobileDrawer.classList.remove('open');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close drawer when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !mobileDrawer.contains(e.target) && mobileDrawer.classList.contains('open')) {
+        mobileDrawer.classList.remove('open');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  // ==========================================
+  // 8. INTERACTIVE SKILL TAG RIPPLE EFFECT
+  // ==========================================
+  document.querySelectorAll('.skill-tag').forEach((tag) => {
+    tag.addEventListener('click', () => {
+      tag.style.transform = 'scale(0.92)';
+      tag.style.background = 'rgba(79, 142, 247, 0.4)';
+      setTimeout(() => {
+        tag.style.transform = '';
+        tag.style.background = '';
+      }, 250);
+    });
+  });
+
+});
